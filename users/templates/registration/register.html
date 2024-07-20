@@ -1,0 +1,15 @@
+<h1>REGISTER</h1>
+<form method='post'>
+  {% csrf_token %}
+
+  {% for field in form %}
+    {{field.label_tag}} <!--to show labels-->
+    {{field}} <!--to show the fields-->
+    {% if field.errors %}
+      <h2> {{field.errors | striptags }} </h2> 
+  <!--striptags to show string with no html-->
+    {% endif %}
+  {% endfor %}
+  <input type='submit' value='Register'>
+  <p>Are you member <a href="{% url 'login' %}">Login</a> </p>
+</form>
